@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>World Calendars Comparator</title>
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #e0e0e0;
+        background-color: #0d1117; /* Dark space background */
+        padding: 20px;
+    }
+    .container {
+        max-width: 1200px;
+        margin: auto;
+        background: #161b22; /* Slightly lighter container background */
+        padding: 20px 30px 40px 30px;
+        border-radius: 8px;
+        border: 1px solid #30363d;
+        position: relative; /* Needed for the vertical line */
+    }
+    h1 {
+        text-align: center;
+        color: #58a6ff;
+        border-bottom: 1px solid #30363d;
+        padding-bottom: 15px;
+        margin-bottom: 30px;
+    }
+    .calendar {
+        margin-bottom: 25px;
+    }
+    .calendar-header {
+        display: flex;
+        align-items: baseline;
+        gap: 15px;
+        margin-bottom: 8px;
+    }
+    .calendar-header h2 {
+        margin: 0;
+        font-size: 1.1em; /* Smaller headline */
+        color: #87ceeb; /* Spacey light blue */
+    }
+    .calendar-header .type {
+        font-size: 0.8em;
+        color: #8b949e;
+        font-style: italic;
+    }
+    .timeline {
+        width: 100%;
+        background-color: #0d1117;
+        height: 25px;
+        border-radius: 3px;
+        border: 1px solid #30363d;
+        display: flex;
+        position: relative;
+        overflow: hidden;
+    }
+    .month-marker {
+        border-left: 1px solid #484f58;
+        height: 100%;
+        box-sizing: border-box;
+    }
+    .month-marker:hover {
+        background-color: rgba(88, 166, 255, 0.3); /* Highlight on hover */
+        cursor: pointer;
+    }
+    .year-marker {
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 3px;
+        background-color: #f778ba; /* Bright pink/purple */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+     .year-marker .year-text {
+        color: #f778ba;
+        font-weight: bold;
+        font-size: 11px;
+        position: absolute;
+        left: 8px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(13, 17, 23, 0.8);
+        padding: 1px 4px;
+        border-radius: 3px;
+        white-space: nowrap;
+     }
+
+    #current-moment-line {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        /* Position calculated for August 3, 2025: (215 days / 365 days) * 100% */
+        left: 58.9%;
+        width: 2px;
+        background: linear-gradient(to bottom, rgba(0, 255, 255, 0), #00ffff, rgba(0, 255, 255, 0)); /* Glowing cyan line */
+        z-index: 10;
+        pointer-events: none; /* Allows clicking through the line */
+    }
+    #current-moment-line::after {
+        content: 'Now';
+        position: absolute;
+        top: 85px;
+        left: 5px;
+        color: #00ffff;
+        font-size: 12px;
+        font-weight: bold;
+        background: #0d1117;
+        padding: 2px;
+        border-radius: 2px;
+    }
+
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>World Calendars Comparison</h1>
+    <div id="current-moment-line"></div>
+
+    <!-- Gregorian Calendar -->
+    <div class="calendar">
+        <div class="calendar-header"><h2>Gregorian</h2><span class="type">(Solar)</span></div>
+        <div class="timeline">
+            <div class="year-marker"><span class="year-text">2025</span></div>
+            <div class="month-marker" style="width: 8.33%;" title="January"></div><div class="month-marker" style="width: 8.33%;" title="February"></div><div class="month-marker" style="width: 8.33%;" title="March"></div><div class="month-marker" style="width: 8.33%;" title="April"></div><div class="month-marker" style="width: 8.33%;" title="May"></div><div class="month-marker" style="width: 8.33%;" title="June"></div><div class="month-marker" style="width: 8.33%;" title="July"></div><div class="month-marker" style="width: 8.33%;" title="August"></div><div class="month-marker" style="width: 8.33%;" title="September"></div><div class="month-marker" style="width: 8.33%;" title="October"></div><div class="month-marker" style="width: 8.33%;" title="November"></div><div class="month-marker" style="width: 8.33%;" title="December"></div>
+        </div>
+    </div>
+    
+    <!-- Persian Calendar -->
+    <div class="calendar">
+        <div class="calendar-header"><h2>Persian (Solar Hijri)</h2><span class="type">(Solar)</span></div>
+        <div class="timeline">
+            <div class="year-marker" style="left: 21.9%; background-color: #a678de;"><span class="year-text" style="color:#a678de;">1404</span></div>
+            <div class="month-marker" style="width: 8.33%;" title="Farvardin"></div><div class="month-marker" style="width: 8.33%;" title="Ordibehesht"></div><div class="month-marker" style="width: 8.33%;" title="Khordad"></div><div class="month-marker" style="width: 8.33%;" title="Tir"></div><div class="month-marker" style="width: 8.33%;" title="Mordad"></div><div class="month-marker" style="width: 8.33%;" title="Shahrivar"></div><div class="month-marker" style="width: 8.33%;" title="Mehr"></div><div class="month-marker" style="width: 8.33%;" title="Aban"></div><div class="month-marker" style="width: 8.33%;" title="Azar"></div><div class="month-marker" style="width: 8.33%;" title="Dey"></div><div class="month-marker" style="width: 8.33%;" title="Bahman"></div><div class="month-marker" style="width: 8.33%;" title="Esfand"></div>
+        </div>
+    </div>
+    
+    <!-- Indian Calendar -->
+    <div class="calendar">
+        <div class="calendar-header"><h2>Indian (Saka)</h2><span class="type">(Solar)</span></div>
+        <div class="timeline">
+            <div class="year-marker" style="left: 22.2%; background-color: #ff9a00;"><span class="year-text" style="color:#ff9a00;">1947</span></div>
+            <div class="month-marker" style="width: 8.33%;" title="Chaitra"></div><div class="month-marker" style="width: 8.33%;" title="Vaisakha"></div><div class="month-marker" style="width: 8.33%;" title="Jyaistha"></div><div class="month-marker" style="width: 8.33%;" title="Asadha"></div><div class="month-marker" style="width: 8.33%;" title="Shravana"></div><div class="month-marker" style="width: 8.33%;" title="Bhadra"></div><div class="month-marker" style="width: 8.33%;" title="Asvina"></div><div class="month-marker" style="width: 8.33%;" title="Kartika"></div><div class="month-marker" style="width: 8.33%;" title="Agrahayana"></div><div class="month-marker" style="width: 8.33%;" title="Pausha"></div><div class="month-marker" style="width: 8.33%;" title="Magha"></div><div class="month-marker" style="width: 8.33%;" title="Phalguna"></div>
+        </div>
+    </div>
+
+    <!-- Islamic Calendar -->
+    <div class="calendar">
+        <div class="calendar-header"><h2>Islamic (Hijri)</h2><span class="type">(Lunar)</span></div>
+        <div class="timeline">
+            <div class="year-marker" style="left: 4.8%; background-color: #56d364;"><span class="year-text" style="color:#56d364;">1447 AH</span></div>
+            <div class="month-marker" style="width: 8.33%;" title="Muharram"></div><div class="month-marker" style="width: 8.33%;" title="Safar"></div><div class="month-marker" style="width: 8.33%;" title="Rabi' al-awwal"></div><div class="month-marker" style="width: 8.33%;" title="Rabi' al-thani"></div><div class="month-marker" style="width: 8.33%;" title="Jumada al-awwal"></div><div class="month-marker" style="width: 8.33%;" title="Jumada al-thani"></div><div class="month-marker" style="width: 8.33%;" title="Rajab"></div><div class="month-marker" style="width: 8.33%;" title="Sha'ban"></div><div class="month-marker" style="width: 8.33%;" title="Ramadan"></div><div class="month-marker" style="width: 8.33%;" title="Shawwal"></div><div class="month-marker" style="width: 8.33%;" title="Dhu al-Qi'dah"></div><div class="month-marker" style="width: 8.33%;" title="Dhu al-Hijjah"></div>
+        </div>
+    </div>
+
+    <!-- Hebrew Calendar -->
+    <div class="calendar">
+        <div class="calendar-header"><h2>Hebrew</h2><span class="type">(Lunisolar)</span></div>
+        <div class="timeline">
+            <div class="year-marker" style="left: 77.5%; background-color: #f0e68c;"><span class="year-text" style="color:#f0e68c;">5786</span></div>
+            <div class="month-marker" style="width: 7.69%;" title="Tishrei"></div><div class="month-marker" style="width: 7.69%;" title="Marcheshvan"></div><div class="month-marker" style="width: 7.69%;" title="Kislev"></div><div class="month-marker" style="width: 7.69%;" title="Tevet"></div><div class="month-marker" style="width: 7.69%;" title="Shevat"></div><div class="month-marker" style="width: 7.69%;" title="Adar"></div><div class="month-marker" style="width: 7.69%;" title="Nisan"></div><div class="month-marker" style="width: 7.69%;" title="Iyar"></div><div class="month-marker" style="width: 7.69%;" title="Sivan"></div><div class="month-marker" style="width: 7.69%;" title="Tammuz"></div><div class="month-marker" style="width: 7.69%;" title="Av"></div><div class="month-marker" style="width: 7.69%;" title="Elul"></div><div class="month-marker" style="width: 7.69%;" title="Adar II (Leap Year)"></div>
+        </div>
+    </div>
+
+    <!-- Chinese Calendar -->
+    <div class="calendar">
+        <div class="calendar-header"><h2>Chinese</h2><span class="type">(Lunisolar)</span></div>
+        <div class="timeline">
+            <div class="year-marker" style="left: 7.9%; background-color: #ff7b72;"><span class="year-text" style="color:#ff7b72;">Year of the Snake</span></div>
+             <div class="month-marker" style="width: 7.69%;" title="Month 1"></div><div class="month-marker" style="width: 7.69%;" title="Month 2"></div><div class="month-marker" style="width: 7.69%;" title="Month 3"></div><div class="month-marker" style="width: 7.69%;" title="Month 4"></div><div class="month-marker" style="width: 7.69%;" title="Month 5"></div><div class="month-marker" style="width: 7.69%;" title="Month 6"></div><div class="month-marker" style="width: 7.69%;" title="Month 7"></div><div class="month-marker" style="width: 7.69%;" title="Month 8"></div><div class="month-marker" style="width: 7.69%;" title="Month 9"></div><div class="month-marker" style="width: 7.69%;" title="Month 10"></div><div class="month-marker" style="width: 7.69%;" title="Month 11"></div><div class="month-marker" style="width: 7.69%;" title="Month 12"></div><div class="month-marker" style="width: 7.69%;" title="Leap Month"></div>
+        </div>
+    </div>
+    
+    <!-- Thai Calendar -->
+    <div class="calendar">
+        <div class="calendar-header"><h2>Thai</h2><span class="type">(Solar)</span></div>
+        <div class="timeline">
+            <div class="year-marker"><span class="year-text">2568 BE</span></div>
+            <div class="month-marker" style="width: 8.33%;" title="January"></div><div class="month-marker" style="width: 8.33%;" title="February"></div><div class="month-marker" style="width: 8.33%;" title="March"></div><div class="month-marker" style="width: 8.33%;" title="April"></div><div class="month-marker" style="width: 8.33%;" title="May"></div><div class="month-marker" style="width: 8.33%;" title="June"></div><div class="month-marker" style="width: 8.33%;" title="July"></div><div class="month-marker" style="width: 8.33%;" title="August"></div><div class="month-marker" style="width: 8.33%;" title="September"></div><div class="month-marker" style="width: 8.33%;" title="October"></div><div class="month-marker" style="width: 8.33%;" title="November"></div><div class="month-marker" style="width: 8.33%;" title="December"></div>
+        </div>
+    </div>
+    
+    <!-- Mayan Haab' Calendar -->
+    <div class="calendar">
+        <div class="calendar-header"><h2>Mayan (Haab')</h2><span class="type">(Solar-like)</span></div>
+        <div class="timeline">
+            <div class="month-marker" style="width: 5.4%;" title="Pop"></div><div class="month-marker" style="width: 5.4%;" title="Wo'"></div><div class="month-marker" style="width: 5.4%;" title="Sip"></div><div class="month-marker" style="width: 5.4%;" title="Sotz'"></div><div class="month-marker" style="width: 5.4%;" title="Sek"></div><div class="month-marker" style="width: 5.4%;" title="Xul"></div><div class="month-marker" style="width: 5.4%;" title="Yaxk'in"></div><div class="month-marker" style="width: 5.4%;" title="Mol"></div><div class="month-marker" style="width: 5.4%;" title="Ch'en"></div><div class="month-marker" style="width: 5.4%;" title="Yax"></div><div class="month-marker" style="width: 5.4%;" title="Sak"></div><div class="month-marker" style="width: 5.4%;" title="Keh"></div><div class="month-marker" style="width: 5.4%;" title="Mak"></div><div class="month-marker" style="width: 5.4%;" title="K'ank'in"></div><div class="month-marker" style="width: 5.4%;" title="Muwan'"></div><div class="month-marker" style="width: 5.4%;" title="Pax"></div><div class="month-marker" style="width: 5.4%;" title="K'ayab"></div><div class="month-marker" style="width: 5.4%;" title="Kumk'u"></div>
+            <div class="month-marker" style="width: 2.8%; background: #484f58;" title="Wayeb'"></div>
+        </div>
+    </div>
+    
+     <!-- Attic Calendar -->
+    <div class="calendar">
+        <div class="calendar-header"><h2>Attic</h2><span class="type">(Lunisolar, Historic)</span></div>
+        <div class="timeline">
+             <div class="year-marker" style="left: 50%; background-color: #e3b341;"><span class="year-text" style="color:#e3b341;">New Year</span></div>
+             <div class="month-marker" style="width: 7.69%;" title="Hekatombaion"></div><div class="month-marker" style="width: 7.69%;" title="Metageitnion"></div><div class="month-marker" style="width: 7.69%;" title="Boedromion"></div><div class="month-marker" style="width: 7.69%;" title="Pyanopsion"></div><div class="month-marker" style="width: 7.69%;" title="Maimakterion"></div><div class="month-marker" style="width: 7.69%;" title="Poseideon"></div><div class="month-marker" style="width: 7.69%;" title="Gamelion"></div><div class="month-marker" style="width: 7.69%;" title="Anthesterion"></div><div class="month-marker" style="width: 7.69%;" title="Elaphebolion"></div><div class="month-marker" style="width: 7.69%;" title="Mounichion"></div><div class="month-marker" style="width: 7.69%;" title="Thargelion"></div><div class="month-marker" style="width: 7.69%;" title="Skirophorion"></div><div class="month-marker" style="width: 7.69%;" title="Leap Month"></div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
